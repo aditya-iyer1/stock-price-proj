@@ -48,18 +48,8 @@ st.subheader("Raw Data")
 st.write(data.tail()) #Already a pandas df, easy for streamlit to handle
 
 def plot_raw_data():
-    if 'Date' in data.columns and 'Close' in data.columns:
-        fig = px.line(
-            data, 
-            x='Date', 
-            y='Close', 
-            title="Stock Closing Prices Over Time",
-            labels={'Close': 'Closing Price', 'Date': 'Date'}
-        )
-        st.plotly_chart(fig)
-    else:
-        st.error("Required columns ('Date', 'Close') are missing in the data.")
-
+	fig = px.line(data, x = data['Date'], y = data['Close'])
+	st.plotly_chart(fig)
 	
 plot_raw_data()
 
